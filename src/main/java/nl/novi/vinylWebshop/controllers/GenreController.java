@@ -25,9 +25,10 @@ class GenreController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    private ResponseEntity<List<Genre>> createGenre(@RequestBody Genre genre) {
+    private ResponseEntity<Genre> createGenre(@RequestBody Genre genre) {
         Genre createdGenre = this.genreService.createGenre(genre);
-        return ResponseEntity.ok().body(genreService.findAllGenres());
+        return ResponseEntity.ok().body(createdGenre);
+
     }
 
     @GetMapping("/{id}")
